@@ -8,7 +8,7 @@ ARGS = [
         {
             'type': int,
             'default': 10,
-            'help': 'Number of branches to display',
+            'help': 'Maximum of branches to display.  If negative, all branches found are displayed.',
         }
     ),
 ]
@@ -29,7 +29,7 @@ def last_checkedout_branches(nb_to_display):
         match = re.match(branch_checkout_pattern, git_log)
         if match:
             branches.add(match.group(1))
-        if len(branches) >= nb_to_display:
+        if len(branches) == nb_to_display:
             break
 
     return branches
