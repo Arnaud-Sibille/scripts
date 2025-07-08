@@ -24,11 +24,13 @@ def last_checkedout_branches(nb_to_display):
     branch_name_pattern = r'[A-Za-z\d/_\.-]+'
     branch_checkout_pattern = r'[\da-f]+\s+HEAD@\{\d+\}:\s+checkout:\s+moving from\s+' + branch_name_pattern + r'\s+to\s+(' + branch_name_pattern + r')$'
 
-    branches = set()
+    branches = []
     for git_log in git_logs.split('\n'):
         match = re.match(branch_checkout_pattern, git_log)
         if match:
-            branches.add(match.group(1))
+            branch = match.group(1)
+            if branch not in branches:
+                branches.append(branch)
         if len(branches) == nb_to_display:
             break
 
