@@ -1,0 +1,10 @@
+DIR_PATH="$HOME/scripts/"
+
+alias show-recent-branch="python3 $DIR_PATH/show_recent_branches.py"
+alias git-switch-pull="$DIR_PATH/git_switch_pull.sh"
+alias git-switch-pull-rebase="$DIR_PATH/git_switch_pull_rebase.sh"
+alias odoo-demo-accountant="$DIR_PATH/odoo_demo_accountant.sh"
+alias switch-odoo-branches="$DIR_PATH/switch_odoo_branches.sh"
+alias switch-pull-odoo-branches="$DIR_PATH/switch_pull_odoo_branches.sh"
+alias find-field-def="python3 $DIR_PATH/find_field_def.py"
+alias drop-odoo-db="python3 $DIR_PATH/drop_odoo_dbs.py"
