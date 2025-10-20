@@ -32,10 +32,14 @@ def drop_odoo_db(db):
     execute_command(dropdb_command)
     drop_db_filestore(db)
 
-if __name__ == "__main__":
+
+def main():
     parser = argparse.ArgumentParser()
     for key, value in ARGUMENTS.items():
         parser.add_argument(*key, **value)
     args = parser.parse_args()
     for db in args.dbs:
         drop_odoo_db(db)
+
+if __name__ == "__main__":
+    main()

@@ -2,6 +2,11 @@ import configparser
 import os
 import subprocess
 
+REPOS_PATH = [
+    "/home/odoo/src/odoo",
+    "/home/odoo/src/enterprise",
+]
+
 
 def get_odoorc_path():
     home_directory = os.path.expanduser("~")
@@ -18,9 +23,6 @@ def get_value_from_odoorc(key):
     if not value:
         raise Exception(f"Could not find '{key}' in [options] of {odoorc_path}.")
     return value
-
-def get_addons_path():
-    return get_value_from_odoorc('addons_path').split(',')
 
 def get_filestore_dir():
     return get_value_from_odoorc('data_dir')
