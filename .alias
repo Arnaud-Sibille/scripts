@@ -1,9 +1,12 @@
 SRC_PATH="$HOME/scripts/src"
 
-alias drop-odoo-db="python3 $SRC_PATH/drop_odoo_dbs.py"
+alias drop-odoo-dbs="python3 $SRC_PATH/drop_odoo_dbs.py"
 alias find-field-def="python3 $SRC_PATH/find_field_def.py"
+alias find-model-def="python3 $SRC_PATH/find_model_def.py"
+alias find-model-inherit="python3 $SRC_PATH/find_model_inherit.py"
 alias git-pull-rebase="$SRC_PATH/git_pull_rebase.sh"
 alias git-switch-pull="$SRC_PATH/git_switch_pull.sh"
 alias odoo-demo-accountant="$SRC_PATH/odoo_demo_accountant.sh"
+alias odoo-demo="$SRC_PATH/odoo_demo.sh"
 alias show-recent-branch="python3 $SRC_PATH/show_recent_branches.py"
 alias switch-odoo-branches="python3 $SRC_PATH/switch_odoo_branches.py"
