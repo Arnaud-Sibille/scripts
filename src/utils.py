@@ -7,6 +7,28 @@ REPOS_PATH = [
     "/home/odoo/src/enterprise",
 ]
 
+CONFIG_FILE_NAME = '.config'
+
+def extract_version_from_branch_name(branch_name):
+    tokens = branch_name.split('-')
+    if tokens[0] == 'saas':
+        return f'saas-{tokens[1]}'
+    return tokens[0]
+
+def get_repo_directory():
+    current_file_dir = os.path.abspath(__file__)
+    return os.path.abspath(os.path.join(current_file_dir, '../..'))
+
+def get_value_from_config(key):
+    config_file_path = os.path.join(get_repo_directory(), CONFIG_FILE_NAME)
+    if not os.path.exists(config_file_path):
+        raise Exception(f"Cannot find config file {config_file_path}")
+    config = configparser.ConfigParser()
+    config.read(config_file_path)
+    return config.get("options", key)
+
+def get_versionned_odoo_repos():
+    return get_value_from_config("versionned_odoo_repos").split(',')
 
 def get_odoorc_path():
     home_directory = os.path.expanduser("~")

@@ -2,7 +2,7 @@
 
 import argparse
 
-from utils import execute_command, REPOS_PATH
+from utils import execute_command, extract_version_from_branch_name, get_versionned_odoo_repos
 
 
 ARGUMENTS = {
@@ -17,14 +17,16 @@ ARGUMENTS = {
 
 
 def switch_repo(repo_path, branch):
-    switch_command = [
+    base_command = [
         "git",
         "-C",
         repo_path,
         "switch",
-        branch,
     ]
-    execute_command(switch_command)
+    try:
+        execute_command([*base_command, branch])
+    except:
+        execute_command([*base_command, extract_version_from_branch_name(branch)])
 
 def pull_repo(repo_path):
     pull_command = [
@@ -36,8 +38,7 @@ def pull_repo(repo_path):
     execute_command(pull_command)
 
 def switch_odoo_branches(version, pull=False):
-    for repo_path in REPOS_PATH:
-        # to avoid considering again the community repo
+    for repo_path in get_versionned_odoo_repos():
         switch_repo(repo_path, version)
         if pull:
             pull_repo(repo_path)
