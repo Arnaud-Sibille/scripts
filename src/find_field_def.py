@@ -30,7 +30,7 @@ def find_field_def(field_name, extra_args=[]):
         subprocess.run(grep_command + extra_args)
 
 
-def main ():
+def main():
     parser = argparse.ArgumentParser()
     for key, value in ARGUMENTS.items():
         parser.add_argument(*key, **value)

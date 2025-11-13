@@ -1,5 +1,6 @@
 import configparser
 import os
+import re
 import subprocess
 
 REPOS_PATH = [
@@ -14,6 +15,25 @@ def extract_version_from_branch_name(branch_name):
     if tokens[0] == 'saas':
         return f'saas-{tokens[1]}'
     return tokens[0]
+
+def get_repo_current_branch(repo_path):
+    get_branch_command = [
+        "git",
+        "-C",
+        repo_path,
+        "rev-parse",
+        "--abbrev-ref",
+        "HEAD",
+    ]
+    output = execute_command(get_branch_command, get_output=True)
+    return output.decode('utf-8').strip()
+
+def guess_odoo_repo_version():
+    for repo in get_versionned_odoo_repos():
+        branch = get_repo_current_branch(repo)
+        version = extract_version_from_branch_name(branch)
+        if re.match(r'^(master|(saas-)?\d+.\d+)$', version):
+            return version
 
 def get_repo_directory():
     current_file_dir = os.path.abspath(__file__)
@@ -57,7 +77,9 @@ def get_filestore_path(db_name):
     return None    
 
 def execute_command(command, get_output=False, input_str=None):
+    print(f"{7 * '*'}- Executing {command}...")
     result = subprocess.run(command, input=input_str.encode() if input_str else None, capture_output=get_output)
     if result.returncode:
         raise Exception(f"Command {command} failed.")
+    print(f"{8 * '*'}")
     return result.stdout
