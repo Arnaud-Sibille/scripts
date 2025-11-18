@@ -1,6 +1,7 @@
 SRC_PATH="$HOME/scripts/src"
 
 alias drop-odoo-dbs="python3 $SRC_PATH/drop_odoo_dbs.py"
+alias execute-odoo-script="python3 $SRC_PATH/execute_odoo_script.py"
 alias find-field-def="python3 $SRC_PATH/find_field_def.py"
 alias find-model-def="python3 $SRC_PATH/find_model_def.py"
 alias find-model-inherit="python3 $SRC_PATH/find_model_inherit.py"
