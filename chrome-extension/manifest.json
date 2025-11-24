@@ -1,0 +1,11 @@
+{
+    "name": "Odoo Dev Extension",
+    "manifest_version": 3,
+    "version": "1.0",
+    "description": "A tool to help odoo develpment (hopefully)",
+    "devtools_page": "devtools.html",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": ["tabs", "activeTab", "scripting"]
+}
