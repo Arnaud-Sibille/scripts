@@ -67,7 +67,7 @@ def get_value_from_odoorc(key):
     return value
 
 def get_filestore_dir():
-    return get_value_from_odoorc('data_dir')
+    return os.path.join(get_value_from_odoorc('data_dir'), 'filestore')
 
 def get_filestore_path(db_name):
     filestore_dir = get_filestore_dir()

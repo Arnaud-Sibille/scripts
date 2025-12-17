@@ -1,3 +1,4 @@
 #!/bin/bash
+SRC_PATH=$HOME/scripts/src
 
-/home/odoo/src/odoo/odoo-bin -d $1 -i $2 --with-demo --stop
+python3 $SRC_PATH/launch_odoo.py -d $1 -i $2 --with-demo --stop
