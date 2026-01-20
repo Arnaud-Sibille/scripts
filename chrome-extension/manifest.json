@@ -3,9 +3,25 @@
     "manifest_version": 3,
     "version": "1.0",
     "description": "A tool to help odoo develpment (hopefully)",
+    "content_scripts": [{
+        "matches": [
+            "*://*/*"
+        ],
+        "js": [
+            "content.js"
+        ]
+    }],
+    "web_accessible_resources": [{
+        "resources": [
+            "script.js"
+        ],
+        "matches": [
+            "<all_urls>"
+        ]
+    }],
     "devtools_page": "devtools.html",
     "action": {
         "default_popup": "popup.html"
     },
-    "permissions": ["tabs", "activeTab", "scripting"]
+    "permissions": ["tabs", "activeTab", "scripting", "storage"]
 }
